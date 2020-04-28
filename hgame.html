@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+<title>GameStart</title>
+<style>
+    body{
+        background:url("bkimg.jpg") no-repeat;
+        background-size: cover ;
+        text-align: center;
+    }
+    #gs{
+        color:orangered;
+        font: 2em sans-serif;
+        text-align: center;
+    }
+    h3{
+        color:orangered;
+        font: 1em sans-serif;
+        text-align: center;
+    }
+    #score{
+        color:orangered;
+        font: 2em sans-serif;
+        text-align: left;
+    } 
+    #exit1 {
+  background-color:orangered;
+  border: snow solid 1%;
+  color:black;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+  float: right;
+  cursor: pointer;
+  border-radius: 5px;
+}   
+.keys{
+    background-color:orangered;
+  border: snow solid 1%;
+  color:black;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 20px;
+  float: center;
+  box-shadow: lightgrey;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 80px;
+  width:80px ;
+  
+} 
+.keys:hover {background-color:red}
+
+.keys:active {
+  background-color:red;
+  box-shadow: 0 5px orange;
+  transform: translateY(4px);
+    }
+    #demo{
+        color:yellow;
+        font-size: 15;
+    }
+
+</style>
+</head>
+<body   onload="load()">
+    <script src="FirstGame.js"></script>
+    
+
+    <p id='gs'>GameStart's</p>
+    <!--h3>Click the numer quickly in order & Click the last number two times to sumbit the game</h3-->
+    <h1 id="demo"></h1>
+
+    <form method="GET" action="game.html" onmousedown=" bleep.play();" onsubmit="stop()">
+        <button type="submit" id="exit1">Exit</button>
+    </form>
+    
+   <p id=score>Time:</p>
+   <img src="gameover.jpg" width=200 style="float:left; visibility: hidden;" id="k">
+   <img src="gameover.jpg" width=200 style="float:right; visibility: hidden;" id="kid">
+   
+   
+   <button id="key1" class="keys" onclick="colourChange(0)" ></button>
+   <button class="keys" onclick="colourChange(1)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(2)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(3)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(4)" style="visibility: visible;"></button><br><br>
+   <button class="keys" onclick="colourChange(5)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(6)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(7)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(8)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(9)" style="visibility: visible;"></button><br><br>
+   <button class="keys" onclick="colourChange(10)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(11)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(12)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(13)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(14)" style="visibility: visible;"></button><br><br>
+   <button class="keys" onclick="colourChange(15)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(16)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(17)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(18)" style="visibility: visible;"></button>
+   <button class="keys" onclick="colourChange(19)" style="visibility: visible;"></button><br><br>
+  
+   
+   
+   <script>
+         var bleep=new Audio()
+bleep.src="bleep.mp3";
+       var second=0;
+function scoreRun(){
+    document.getElementById("score").innerHTML="Time:"+" "+second+" "+"seconds";
+    second++;
+    
+};
+function start(){
+    id=window.setInterval(scoreRun,1000);
+};
+function stop(){
+   window.clearInterval(id);
+};
+    
+
+function load(){
+    start();
+    numberfn();
+    
+};
+
+    function getRandom(min,max)
+{
+   var a=max-min+1;
+    var result=Math.floor(Math.random()*a)+min;
+    return result;
+};
+
+function createarray(start,end){
+    var ar=[];
+    for(var i=start;i<=end;i++){
+        ar.push(i);
+    }
+    return ar;
+};
+var number=createarray(1,20);
+ function numberfn(){
+    
+    for(var j=0;j<20;j++)
+    {var randomindex=getRandom(0,number.length-1);
+       this.random=number[randomindex];
+        number.splice(randomindex,1);
+        this.x=document.getElementsByClassName("keys");
+        x[j].innerHTML=random;
+        x[j].style.background="rgb(255,69,"+(random*5)+")"; 
+        }
+       };
+
+       var clink=new Audio()
+       clink.src="clink.wav"; 
+       var arra=createarray(1,60);  
+function colourChange(index){
+    clink.play();
+       z=document.getElementsByClassName("keys")[index].innerHTML;
+       var k=getRandom(0,number.length-1);
+       this.m=arra[k];
+       arra.splice(k,1);
+       console.log(m);
+       if(z==m && z<=40){
+        document.getElementsByClassName("keys")[index].style.background="rgb(255,69,"+((m+20)*5)+")";
+           document.getElementsByClassName("keys")[index].innerHTML=m+20;
+          }else if(z==m && m==60){
+        y=document.getElementById("score").innerHTML;
+        h=y.match(/\d+/g); 
+        document.getElementById("demo").innerHTML="Your Timing is"+" "+h+" "+"seconds &#128516";
+        stop();
+        
+        document.getElementById("k").style.visibility="visible";
+        document.getElementById("kid").style.visibility="visible";
+        local(h);
+        stp();
+        document.getElementsByClassName("keys")[index].style.background = "goldenrod";
+        document.getElementsByClassName("keys")[index].innerHTML="&#1285"+(m+20);
+       }else if(z==m && m<10){
+       document.getElementsByClassName("keys")[index].style.background = "goldenrod";
+       document.getElementsByClassName("keys")[index].innerHTML="&#12852"+m;
+       }else if(z==m && m>=10){
+        document.getElementsByClassName("keys")[index].style.background = "goldenrod";
+        document.getElementsByClassName("keys")[index].innerHTML="&#1285"+(m+20);
+        }else  if(z!=m){
+      /*  document.getElementById("demo").innerHTML="You should click "+m+" but you have clicked "+z+" &#128580 Start the new game";
+        stop();
+
+        document.getElementById("k").style.visibility="visible";
+        document.getElementById("kid").style.visibility="visible";
+        document.getElementsByClassName("keys")[index].style.background = "gray";
+       stp();*/
+        arra.unshift(m);
+       }
+    };
+    function stp(){
+     window.setTimeout(cance,4000);
+ };
+ function cance(){
+    window.document.location="game.html";
+ };
+ function local(l)
+    {
+        var a = [];
+        a = JSON.parse(localStorage.getItem('Htime')) || [];
+        a.push(l);
+        localStorage.setItem('Htime', JSON.stringify(a));
+        
+    }
+   </script>
+
+  
+    
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Numchuck</title>
+<style>
+    body{
+        background:url("bkimg.jpg") no-repeat;
+        background-size: 100% ;
+        text-align: center;
+       
+        }
+    button,#mode1,#scr,#scre,#scro {
+  background-color:orangered;
+  border: snow solid 1%;
+  color:black;
+  padding: 1% 2%;
+  text-align: center;
+  font-size: 100%;
+  cursor: pointer;
+  border-radius: 5px;
+}  
+.ds{
+  color:whitesmoke;
+        font: 1em sans-serif bolder;
+        text-align: center;
+}  
+    
+</style>
+
+</head>
+<body>
+    <img src="Untitled.png" width=20% style="float:left;">
+    <img src="Untitled.png" width=20% style="float:right;">
+    <br><br> <br><br> <br><br> <br><br> <br><br> <br><br>
+    
+    <button type="submit" id="sub" onmousedown="bleep.play()">Start game &#128077</button>
+    <br><br>
+    <select name="mode1" id="mode1" onchange=" bleep.play()" >
+        <option id="easy" value="easy" >Easy</option>
+        <option id="mod" value="mod">Moderate</option>
+        <option id="har" value="har" >Hard</option>
+    </select>
+</form> 
+    <br><br>
+    
+        <!--button>BestScore</button><br><br-->
+  <button id="scr" onmousedown="bleep.play()" onclick="scro()" > E-BScore</button>
+  <button id="scre" onmousedown="bleep.play()" onclick="scoro()">M-BScore</button>
+  <button id="scro" onmousedown="bleep.play()" onclick="scre()">H-BScore</button>
+  <h3 class='ds' id='one'></h3>
+  <h3 class='ds' id='two'></h3>
+  <h3  class='ds'id='three'></h3>
+  <h3 class='ds' id='four'></h3>
+  <h3 class='ds' id='five'></h3>
+  
+    
+    
+    <form action="exit.html"-->
+   <button onmousedown="bleep.play()"> Exit &#128400</button>
+    </form-->
+
+    <script >
+              
+         var bleep=new Audio()
+bleep.src="bleep.mp3"; 
+     const map = {
+    easy: 'egame.html'
+ ,mod: 'mgame.html'
+ ,har: 'hgame.html'
+}
+document.getElementById('sub').addEventListener('click', () =>
+  location.href = map[document.getElementById('mode1').value])
+ 
+function scro(){
+  a = JSON.parse(localStorage.getItem('Etime')) || [];
+  console.log(a[0]);
+  a.sort(function(a, b){return a-b});
+  document.getElementById("one").innerHTML="&#128526 "+a[0]+" seconds";
+  document.getElementById("two").innerHTML="&#128526 "+a[1]+" seconds";
+  document.getElementById("three").innerHTML="&#128526 "+a[2]+" seconds";
+  document.getElementById("four").innerHTML="&#128526 "+a[3]+" seconds";
+  document.getElementById("five").innerHTML="&#128526 "+a[4]+" seconds";
+ 
+  }
+  function scoro(){
+    a = JSON.parse(localStorage.getItem('Mtime')) || [];
+  console.log(a[0]);
+  a.sort(function(a, b){return a-b});
+  document.getElementById("one").innerHTML="&#128526 "+a[0]+" seconds";
+  document.getElementById("two").innerHTML="&#128526 "+a[1]+" seconds";
+  document.getElementById("three").innerHTML="&#128526 "+a[2]+" seconds";
+  document.getElementById("four").innerHTML="&#128526 "+a[3]+" seconds";
+  document.getElementById("five").innerHTML="&#128526 "+a[4]+" seconds";
+ 
+  }
+  function scre(){
+    a = JSON.parse(localStorage.getItem('Htime')) || [];
+  console.log(a[0]);
+  a.sort(function(a, b){return a-b});
+  document.getElementById("one").innerHTML="&#128526 "+a[0]+" seconds";
+  document.getElementById("two").innerHTML="&#128526 "+a[1]+" seconds";
+  document.getElementById("three").innerHTML="&#128526 "+a[2]+" seconds";
+  document.getElementById("four").innerHTML="&#128526 "+a[3]+" seconds";
+  document.getElementById("five").innerHTML="&#128526 "+a[4]+" seconds";
+ 
+  }
+ 
+      
+  
+</script>    
+    
+   
+
+</body>
+</html>
